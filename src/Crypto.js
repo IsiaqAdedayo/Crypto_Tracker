@@ -6,10 +6,8 @@ const Crypto = ({coins}) => {
     
     const [search, setSearch] = useState('') 
 
-    const handleChange = e => {
-        e.preventDefault();
-        setSearch(e.target.value)
-    }
+    const handleChange = e => setSearch(e.target.value);
+    const handleSubmit = e => e.preventDefault();
 
     const filteredCoins = coins.filter(coin =>
         coin.name.toLowerCase().includes(search.toLowerCase())
@@ -19,7 +17,7 @@ const Crypto = ({coins}) => {
         <div className='coin-app'>
             <div className='coin-search'>
                 <h1 className='coin-text'>Crypto Tracker</h1>
-                <form>
+                <form onSubmit={handleSubmit}>
                     <input type="text" placeholder="search..." className='coin-input' onChange={handleChange}/>
                 </form>
             </div>
